@@ -41,10 +41,10 @@ public class Piece : MonoBehaviour
         // Limit the column to 6 max
         column = Mathf.Min(column+1, 6);
 
-        // The parent of pieces (PiecesContainer) is positionned above the middle (3rd) column so update the localposition of the piece according to it
-        Vector3 newPos = transform.localPosition;
-        newPos.x = (column-3) * COLUMN_WIDTH;
-        transform.localPosition = newPos;
+        // New x position of the piece
+        float newX = (column - 3) * COLUMN_WIDTH;
+
+        // TODO: update piece position
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -53,10 +53,10 @@ public class Piece : MonoBehaviour
         // Limit the column to 0 min
         column = Mathf.Max(column - 1, 0);
 
-        // The parent of pieces (PiecesContainer) is positionned above the middle (3rd) column so update the localposition of the piece according to it
-        Vector3 newPos = transform.localPosition;
-        newPos.x = (column - 3) * COLUMN_WIDTH;
-        transform.localPosition = newPos;
+        // New x position of the piece
+        float newX = (column - 3) * COLUMN_WIDTH;
+
+        // TODO: update piece position
     }
 
     // Release the piece so it drops in the column
@@ -73,26 +73,8 @@ public class Piece : MonoBehaviour
         // Update owner
         this.owner = owner;
 
-        // Assign the matching material to the piece renderer
-        Renderer renderer = GetComponent<Renderer>();
-        if (owner == Connect4Game.Owner.PLAYER)
-            renderer.material = GameManager.instance.playerPieceMaterial;
-        else
-            renderer.material = GameManager.instance.AIPieceMaterial;
+        // TODO: Assign the correct material to the piece renderer
     }
 
-    // When the piece reached its final place (i.e. bottom of board or touched another piece)
-    private void OnCollisionEnter(Collision collision)
-    {
-        // Ignore collisions before release or after it has reached final place
-        if (!isReleased || hasReachedFinalPlace)
-            return;
-
-        // Update hasReachedFinalPlace state and tell GameManager that a new turn can be played
-        if (collision.collider.tag == "BottomCollider" || collision.collider.GetComponent<Piece>() != null)
-        {
-            GameManager.instance.NextTurn();
-            hasReachedFinalPlace = true;
-        }
-    }
+    // TODO: Detect When the piece reached its final place and trigger next turn
 }
