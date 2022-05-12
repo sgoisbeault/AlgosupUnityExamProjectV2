@@ -1,7 +1,7 @@
 Write your answers to the 3 questions below
 
-1. Compared to a standard flat screen 3D app, a VR app makes use of different interactions (keyboard and mouse are replaced by controllers, trackers and/or other body sensors). A VR app also has to have soft motions and transitions to avoid motion sickness
+1.
 
-2. C. SLAM
+2.
 
-3. B. Passive stereoscopy
+3.
